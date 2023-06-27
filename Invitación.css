@@ -1,14 +1,12 @@
-/*#boton-direccion, #boton-asistencia {
-  transition: opacity 0.3s ease;
-}
-
-#boton-direccion, #boton-asistencia {
-  opacity: 0;
+/*
+hover
+#814c9ed4
 }*/
 
 .u-section-1 .u-sheet-1 {
   min-height: 1923px;
 }
+
 /*
 .u-section-1 .u-btn-1
 */
@@ -37,11 +35,13 @@
   margin: -70px auto 60px;
 }
 
-#boton-direccion, #boton-asistencia {
+#boton-direccion,
+#boton-asistencia {
   transition: opacity 0.3s ease;
 }
 
-#boton-direccion, #boton-asistencia {
+#boton-direccion,
+#boton-asistencia {
   transition: opacity 0.3s ease;
 }
 

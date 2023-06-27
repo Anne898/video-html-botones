@@ -10,79 +10,123 @@
     <link rel="stylesheet" href="Invitación.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer></script>
-
     <meta name="generator" content="Nicepage 5.11.4, nicepage.com">
-
-    <link id="u-theme-google-font" rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-
-    <script type="application/ld+json">{
-		"@context": "http://schema.org",
-		"@type": "Organization",
-		"name": "Copia de Site5",
-		"sameAs": [
-				"https://www.facebook.com/AnaAcostaInvitacionesInfantiles/",
-				"https://wa.me/message/FXJMHPKDZSCZI1",
-				"https://www.instagram.com/anaacosta_invitaciones/"
-		]
-}</script>
-    <meta name="theme-color" content="#3f62f1">
-    <meta property="og:title" content="Invitación">
-    <meta property="og:description" content>
-    <meta property="og:type" content="website">
-    <meta data-intl-tel-input-cdn-path="intlTelInput/">
 
     <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
     <script type="text/javascript">
 
 document.addEventListener('DOMContentLoaded', function() {
-  var video = document.querySelector('.embed-responsive-item');
+  var video = document.querySelector('.video');
   var botonDireccion = document.getElementById('boton-direccion');
   var botonAsistencia = document.getElementById('boton-asistencia');
+
+  function stopVideo() {
+    video.pause();
+    video.currentTime = 0;
+  }
+
+  window.addEventListener('beforeunload', function() {
+    stopVideo();
+  });
 
   video.addEventListener('timeupdate', function() {
     var currentTime = video.currentTime;
 
-    if (currentTime >= 25 && currentTime <= 32.5) {
-      botonDireccion.style.opacity = '1'; // Mostrar el botón
+    //CAMBIAR EL TIEMPO DE LOS BOTONES
+
+    if (currentTime >= 36.6 && currentTime <= 45) { //DIRECCIÓN
+      botonDireccion.style.opacity = '1'; 
+      botonDireccion.style.pointerEvents = 'auto';
     } else {
-      botonDireccion.style.opacity = '0'; // Ocultar el botón
+      botonDireccion.style.opacity = '0'; 
+      botonDireccion.style.pointerEvents = 'none'; 
     }
 
-    if (currentTime >= 40) {
-      botonAsistencia.style.opacity = '1'; // Mostrar el botón
+    if (currentTime >= 52) { //ASISTENCIA
+      botonAsistencia.style.opacity = '1'; 
+      botonAsistencia.style.pointerEvents = 'auto'; 
     } else {
-      botonAsistencia.style.opacity = '0'; // Ocultar el botón
+      botonAsistencia.style.opacity = '0'; 
+      botonAsistencia.style.pointerEvents = 'none';
     }
   });
 
   video.addEventListener('ended', function() {
     botonDireccion.style.opacity = '0'; // Ocultar el botón
+    botonDireccion.style.pointerEvents = 'none'; 
     botonAsistencia.style.opacity = '0'; // Ocultar el botón
+    botonAsistencia.style.pointerEvents = 'none'; // Deshabilitar eventos de clic
   });
 });
 
 
 </script>
 
-  </head>
-  <body data-home-page-title="Invitación"
-    class="u-body u-xl-mode" data-lang="es">
-    <section class="u-clearfix u-lightbox u-uploaded-video u-section-1"
-      id="sec-aecd">
-      <div class="u-clearfix u-sheet u-uploaded-video u-video-contain u-sheet-1">
-        <div class="u-align-center u-left-0 u-uploaded-video u-video u-video-1">
-          <div class="embed-responsive">
-            <video class="embed-responsive-item" loop controls>
-              <source src="files/inv.mp4" type="video/mp4">
-              <p>Your browser does not support HTML5 video.</p>
-            </video>
-            <button class="u-video-poster"></button>
-          </div>
-        </div>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
 
-        <a id="boton-direccion" href="https://maps.app.goo.gl/MzR4kuNyrUAPLAiR6"
-          class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-color-32 u-custom-font u-font-georgia u-hover-custom-color-33 u-radius-50 u-btn-1">
+    .container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .video {
+        width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+
+    .button-container {
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+
+    .button {
+        display: block;
+        padding: 10px 20px;
+        border-radius: 50px;
+        background-color: rgb(10, 141, 206);
+        color: white;
+        font-size: 40px;
+        text-decoration: none;
+        margin: 5px 0;
+    }
+
+    .button:hover {
+      background-color: rgba(10, 141, 206, 0.785);
+
+          }
+
+    .button i {
+        margin-right: 5px;
+    }
+</style>
+
+  </head>
+  <body>
+    <div class="container">
+
+      <!-- VIDEO -->
+      <video class="video" controls>
+        <source src="files/inv.mp4" type="video/mp4">
+      </video>
+
+      <div class="button-container">
+
+        <!-- LINK DE UBICACIÓN -->
+        <a id="boton-direccion"
+          href="https://maps.app.goo.gl/MzR4kuNyrUAPLAiR6"
+          class="button u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-color-32 u-custom-font u-hover-custom-color-33 u-radius-50 u-btn-1">
           <span class="u-icon"><svg class="u-svg-content"
               viewBox="0 0 54.757 54.757" x="0px" y="0px"
               style="width: 1em; height: 1em;">
@@ -91,26 +135,16 @@ document.addEventListener('DOMContentLoaded', function() {
             </svg></span>&nbsp;VER UBICACIÓN
         </a>
 
-      <!--   <a id="boton-asistencia"
-          href="https://maps.app.goo.gl/MzR4kuNyrUAPLAiR6"
-          class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-color-32 u-custom-font u-font-georgia u-hover-custom-color-33 u-radius-50 u-btn-1">
-          <span class="u-icon"><svg class="u-svg-content"
-              viewBox="0 0 54.757 54.757" x="0px" y="0px"
-              style="width: 1em; height: 1em;">
-              <path
-                d="M40.94,5.617C37.318,1.995,32.502,0,27.38,0c-5.123,0-9.938,1.995-13.56,5.617c-6.703,6.702-7.536,19.312-1.804,26.952 L27.38,54.757L42.721,32.6C48.476,24.929,47.643,12.319,40.94,5.617z M27.557,26c-3.859,0-7-3.141-7-7s3.141-7,7-7s7,3.141,7,7 S31.416,26,27.557,26z"></path>
-            </svg></span>&nbsp;CONFIRMAR ASISTENCIA
-        </a>
--->
+        <!-- LINK DE ASISTENCIA -->
         <a id="boton-asistencia"
           href="https://api.whatsapp.com/send?phone=+526144645091&text=%C2%A1Hola%21+Muchas+gracias+por+la+invitaci%C3%B3n%2C+ah%C3%AD+estaremos%21%21+%F0%9F%A5%B3"
-          class="u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-color-32 u-custom-font u-font-georgia u-hover-custom-color-33 u-radius-50 u-btn-2">
+          class="button u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-color-32 u-custom-font u-hover-custom-color-33 u-radius-50 u-btn-2">
           <span class="u-file-icon u-icon u-text-white">
             <img src="images/4423488-31559490.png" alt>
           </span>&nbsp;CONFIRMAR ASISTENCIA
         </a>
-
       </div>
-    </section>
+    </div>
 
-  </body></html>
+  </body>
+</html>
