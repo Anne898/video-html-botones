@@ -10,21 +10,35 @@
     <link rel="stylesheet" href="Invitación.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer></script>
+
     <meta name="generator" content="Nicepage 5.11.4, nicepage.com">
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link id="u-theme-google-font" rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+    <meta name="theme-color" content="#3f62f1">
+    <meta property="og:title" content="Invitación">
+    <meta property="og:description" content>
+    <meta property="og:type" content="website">
+    <meta data-intl-tel-input-cdn-path="intlTelInput/">
 
     <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
     <script type="text/javascript">
 
 document.addEventListener('DOMContentLoaded', function() {
-  var video = document.querySelector('.video');
+  var video = document.querySelector('video');
   var botonDireccion = document.getElementById('boton-direccion');
   var botonAsistencia = document.getElementById('boton-asistencia');
 
+  // Función para detener el video
   function stopVideo() {
     video.pause();
-    video.currentTime = 0;
   }
 
+  // Evento antes de descargar la página
   window.addEventListener('beforeunload', function() {
     stopVideo();
   });
@@ -32,119 +46,136 @@ document.addEventListener('DOMContentLoaded', function() {
   video.addEventListener('timeupdate', function() {
     var currentTime = video.currentTime;
 
-    //CAMBIAR EL TIEMPO DE LOS BOTONES
-
-    if (currentTime >= 36.6 && currentTime <= 45) { //DIRECCIÓN
-      botonDireccion.style.opacity = '1'; 
-      botonDireccion.style.pointerEvents = 'auto';
+    if (currentTime >= 27 && currentTime <= 34.5) {
+      botonDireccion.style.opacity = '1'; // Mostrar el botón
+      botonDireccion.style.pointerEvents = 'auto'; // Habilitar eventos de clic
     } else {
-      botonDireccion.style.opacity = '0'; 
-      botonDireccion.style.pointerEvents = 'none'; 
+      botonDireccion.style.opacity = '0'; // Ocultar el botón
+      botonDireccion.style.pointerEvents = 'none'; // Deshabilitar eventos de clic
     }
 
-    if (currentTime >= 52) { //ASISTENCIA
-      botonAsistencia.style.opacity = '1'; 
-      botonAsistencia.style.pointerEvents = 'auto'; 
+    if (currentTime >= 35) {
+      botonAsistencia.style.opacity = '1'; // Mostrar el botón
+      botonAsistencia.style.pointerEvents = 'auto'; // Habilitar eventos de clic
     } else {
-      botonAsistencia.style.opacity = '0'; 
-      botonAsistencia.style.pointerEvents = 'none';
+      botonAsistencia.style.opacity = '0'; // Ocultar el botón
+      botonAsistencia.style.pointerEvents = 'none'; // Deshabilitar eventos de clic
     }
   });
 
   video.addEventListener('ended', function() {
     botonDireccion.style.opacity = '0'; // Ocultar el botón
-    botonDireccion.style.pointerEvents = 'none'; 
+    botonDireccion.style.pointerEvents = 'none'; // Deshabilitar eventos de clic
     botonAsistencia.style.opacity = '0'; // Ocultar el botón
     botonAsistencia.style.pointerEvents = 'none'; // Deshabilitar eventos de clic
   });
 });
+</script>
 
-
+    <script>
+  var video = document.getElementById('video');
+  video.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
 </script>
 
     <style>
-    body {
-        margin: 0;
-        padding: 0;
-    }
 
-    .container {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    
+  body {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: #f0f0f0;
+    overflow: hidden;
 
-    .video {
-        width: 100%;
-        max-height: 100%;
-        object-fit: cover;
-    }
+  }
 
-    .button-container {
-        position: absolute;
-        bottom: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-    }
+  #video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 177.78%; /* Aspect ratio 9:16 (1080x1920) */
+  }
 
-    .button {
-        display: block;
-        padding: 10px 20px;
-        border-radius: 50px;
-        background-color: rgb(10, 141, 206);
-        color: white;
-        font-size: 40px;
-        text-decoration: none;
-        margin: 5px 0;
-    }
+  #video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-    .button:hover {
-      background-color: rgba(10, 141, 206, 0.785);
+  #button-container {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-          }
+#boton-direccion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 35px;
+  border-radius: 25px;
+  background-color: #ffabd4;
+  margin-bottom: 0px; /* Ajusta el valor según el espaciado deseado entre los botones */
+  font-size: 12px;
+  color: #ffffff;
+  text-decoration: none;
+}
 
-    .button i {
-        margin-right: 5px;
-    }
+#boton-asistencia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 35px;
+  border-radius: 25px;
+  background-color: #ffabd4;
+  margin-bottom: 0px; /* Ajusta el valor según el espaciado deseado entre los botones */
+  font-size: 12px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+
+  .button i {
+    margin-right: 10px;
+  }
 </style>
 
   </head>
   <body>
-    <div class="container">
-
-      <!-- VIDEO -->
-      <video class="video" controls>
+    <div id="video-container">
+      <video id="video" controls>
         <source src="files/inv.mp4" type="video/mp4">
       </video>
-
-      <div class="button-container">
-
-        <!-- LINK DE UBICACIÓN -->
-        <a id="boton-direccion"
-          href="https://maps.app.goo.gl/MzR4kuNyrUAPLAiR6"
-          class="button u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-color-32 u-custom-font u-hover-custom-color-33 u-radius-50 u-btn-1">
-          <span class="u-icon"><svg class="u-svg-content"
-              viewBox="0 0 54.757 54.757" x="0px" y="0px"
-              style="width: 1em; height: 1em;">
-              <path
-                d="M40.94,5.617C37.318,1.995,32.502,0,27.38,0c-5.123,0-9.938,1.995-13.56,5.617c-6.703,6.702-7.536,19.312-1.804,26.952 L27.38,54.757L42.721,32.6C48.476,24.929,47.643,12.319,40.94,5.617z M27.557,26c-3.859,0-7-3.141-7-7s3.141-7,7-7s7,3.141,7,7 S31.416,26,27.557,26z"></path>
-            </svg></span>&nbsp;VER UBICACIÓN
-        </a>
-
-        <!-- LINK DE ASISTENCIA -->
-        <a id="boton-asistencia"
-          href="https://api.whatsapp.com/send?phone=+526144645091&text=%C2%A1Hola%21+Muchas+gracias+por+la+invitaci%C3%B3n%2C+ah%C3%AD+estaremos%21%21+%F0%9F%A5%B3"
-          class="button u-align-center u-border-none u-btn u-btn-round u-button-style u-custom-color-32 u-custom-font u-hover-custom-color-33 u-radius-50 u-btn-2">
-          <span class="u-file-icon u-icon u-text-white">
-            <img src="images/4423488-31559490.png" alt>
-          </span>&nbsp;CONFIRMAR ASISTENCIA
-        </a>
-      </div>
     </div>
 
+    <div id="button-container">
+
+      <a id="boton-direccion" href="#" class="button fa-solid fa-location-dot"
+        style="color: #ffffff;"> <i class="fas fa-map-marker-alt"></i> VER
+        UBICACIÓN
+      </a>
+
+      <a id="boton-asistencia"
+        href="https://api.whatsapp.com/send?phone=+5218341266313&text=%C2%A1Hola%21+Muchas+gracias+por+la+invitaci%C3%B3n%2C+ah%C3%AD+estaremos%21%21+%F0%9F%A5%B3"
+        class="button">
+        <i class="fab fa-whatsapp"></i>CONFIRMAR ASISTENCIA</a>
+    </div>
+
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"
+      crossorigin="anonymous"></script>
   </body>
+
 </html>
